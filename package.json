@@ -3,18 +3,13 @@
   "version": "1.0.0",
   "description": "pcat photo app",
   "main": "app.js",
-  "dependencies": {
-    "connect-flash": "^0.1.1",
-    "ejs": "^3.1.6",
-    "express": "^4.17.1",
-    "nodemailer": "^6.6.3"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.12"
-  },
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barisgunduzer/PCAT.git"
   },
   "keywords": [
     "pcat",
@@ -22,5 +17,21 @@
     "app"
   ],
   "author": "Barış Gündüzer",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barisgunduzer/PCAT/issues"
+  },
+  "homepage": "https://github.com/barisgunduzer/PCAT#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "express-sessions": "^1.0.6",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.13.8",
+    "nodemailer": "^6.6.3"
+  }
 }

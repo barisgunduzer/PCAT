@@ -1,5 +1,19 @@
-exports.getIndexPage = (req, res) => {
+const Photo = require('../models/Photo');
+
+exports.getIndexPage = async (req, res) => {
+  const page = req.query.page || 1;
+  const photosPerPage = 3;
+
+  const totalPhotos = await Photo.find().countDocuments();
+  const photos = await Photo.find({})
+    .sort('-createdAt')
+    .skip((page - 1) * photosPerPage)
+    .limit(photosPerPage);
+
   res.render('index', {
+    photos: photos,
+    current: page,
+    pages: Math.ceil(totalPhotos / photosPerPage),
     page_name: 'index',
   });
 };
@@ -10,7 +24,7 @@ exports.getAboutPage = (req, res) => {
   });
 };
 
-exports.getAddPhotoPage = (req, res) => {
+exports.getAddPage = (req, res) => {
   res.render('add', {
     page_name: 'add',
   });
@@ -19,6 +33,13 @@ exports.getAddPhotoPage = (req, res) => {
 exports.getContactPage = (req, res) => {
   res.status(200).render('contact', {
     page_name: 'contact',
+  });
+};
+
+exports.getEditPage = async (req, res) => {
+  const photo = await Photo.findOne({ _id: req.params.id });
+  res.render('edit', {
+    photo,
   });
 };
 
@@ -42,7 +63,7 @@ exports.sendEmail = async (req, res) => {
       secure: true, // true for 465, false for other ports
       auth: {
         user: 'johndoe@gmail.com', // gmail account
-        pass: 'passxxxxxxxx', // gmail password
+        pass: 'xxxxxxxxxx', // gmail password
       },
     });
 
@@ -63,7 +84,7 @@ exports.sendEmail = async (req, res) => {
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 
   } catch (err) {
-    console.log('Error: Message not posted!')
-    res.status(401).redirect('/contact');
+    
+    console.log(err);
   }
 };

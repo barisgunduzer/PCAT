@@ -118,7 +118,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# project-dev-files
+# Project files
 PCAT_IMAGES/
 .prettierrc
 
