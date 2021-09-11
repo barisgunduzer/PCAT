@@ -23,7 +23,7 @@ exports.createPhoto = async (req, res) => {
 exports.getPhoto = async (req, res) => {
   const photo = await Photo.findById(req.params.id);
   res.render('photo', {
-    photo,
+    photo,    
   });
 };
 

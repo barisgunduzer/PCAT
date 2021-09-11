@@ -39,7 +39,7 @@ exports.getContactPage = (req, res) => {
 exports.getEditPage = async (req, res) => {
   const photo = await Photo.findOne({ _id: req.params.id });
   res.render('edit', {
-    photo,
+    photo,    
   });
 };
 

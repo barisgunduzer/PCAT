@@ -4,10 +4,11 @@ const pageController = require('../controllers/pageController');
 
 const router = express.Router();
 
-router.route('/photos/edit/:id').get(pageController.getEditPage);
+router.route('/edit/:id').get(pageController.getEditPage);
 
-router.route('/').get(photoController.getAllPhotos);
-router.route('/photos/:id').get(photoController.getPhoto);
-router.route('/add_photo').post(photoController.createPhoto);
-router.route('/photos/:id').put(photoController.updatePhoto);
-router.route('/photos/:id').delete(photoController.deletePhoto);
+router.route('/').post(photoController.createPhoto);
+router.route('/:id').get(photoController.getPhoto);
+router.route('/:id').put(photoController.updatePhoto);
+router.route('/:id').delete(photoController.deletePhoto);
+
+module.exports = router;
