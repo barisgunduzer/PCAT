@@ -1,9 +1,9 @@
 const express = require('express');
 const ejs = require('ejs');
+const flash = require('connect-flash');
 const pageRouter = require('./routers/pageRouter');
 
 const app = express();
-
 
 //Template Engine
 app.set('view engine', 'ejs');
@@ -15,6 +15,13 @@ app.use('/', pageRouter);
 
 //Middlewares
 app.use(express.static('public'));
+
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.messages = req.flash();
+  next();
+});
 
 //Configs
 const port = 3000;
