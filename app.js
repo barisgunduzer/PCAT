@@ -9,10 +9,10 @@ const app = express();
 
 //Connect DB
 
-// 'mongodb+srv://baris:YHTo6WDJnzgNcBUa@cluster0.ckjpb.mongodb.net/pcat-db?retryWrites=true&w=majority' 'mongodb://localhost/pcat-test-db'
+
 
 mongoose.connect(
-  'mongodb+srv://baris:YHTo6WDJnzgNcBUa@cluster0.ckjpb.mongodb.net/pcat-db?retryWrites=true&w=majority',
+  'mongodb://localhost/pcat-test-db',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
